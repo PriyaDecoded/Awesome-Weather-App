@@ -15,7 +15,6 @@ function formatDate(timestamp){
 
 
 function displayTemperature(response){
-    console.log(response.data);
     let cityElement = document.querySelector("#city");
     cityElement.innerHTML = response.data.address;
     let tempElement = document.querySelector("#temp");
@@ -34,7 +33,6 @@ function displayTemperature(response){
 
 let apiKey = "DHQX5SS2M9NKBSND8G9HELMWF";
 let apiUrl = `https://weather.visualcrossing.com/VisualCrossingWebServices/rest/services/timeline/Toronto?unitGroup=metric&key=${apiKey}&contentType=json`;
-console.log(apiUrl);
 
 axios.get(apiUrl).then(displayTemperature);
 
