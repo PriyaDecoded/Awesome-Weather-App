@@ -44,12 +44,20 @@ padding: 0;
     width: 64px;
 }
 
-.temp{
-    font-size: 32px;
+#temp{
+    font-size: 40px;
 }
 .units{
     
     font-size: 16px;
-    
 
+}
+#fah{
+    text-decoration: none;
+}
+
+#units{
+    display: inline-block;
+    vertical-align: top;
+    padding-top: 7px;
 }

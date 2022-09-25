@@ -11,16 +11,17 @@
       integrity="sha384-iYQeCzEYFbKjA/T2uDLTpkwGzCiq6soy8tYaI1GyVh/UjpbCx/TYkiZhlZB6+fzT"
       crossorigin="anonymous"
     />
+    <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
     <link rel="stylesheet" href="src/style.css" />
   </head>
   <body>
     <div class="container">
       <div class="weather-app-wrapper">
         <div class="weather-app">
-          <h1>New York</h1>
+          <h1 id="city"></h1>
           <ul>
-            <li>Saturday 15:54</li>
-            <li>Clear</li>
+            <li id="today">Saturday 15:54</li>
+            <li id="conditions"></li>
           </ul>
 
           <div class="row">
@@ -32,15 +33,14 @@
                 id="icon"
               />
 
-              <span class="temp">12</span>
-              <span class="units">°C | <a href="#" id="fah">°F</a></span>
+              <span id="temp"></span>
+              <span id="units">°C | <a href="#" id="fah">°F</a></span>
             </div>
 
             <div class="col-6">
               <ul>
-                <li>Precipitation: 0%</li>
-                <li>Humdity: 73%</li>
-                <li>Wind: 2 km/hr</li>
+                <li>Humdity: <span id="humid"></span>%</li>
+                <li>Wind: <span id="wind"></span> km/hr</li>
               </ul>
             </div>
           </div>
