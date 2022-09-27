@@ -1,5 +1,6 @@
+
 function formatDate(timestamp){
-    let date = new Date;
+    let date = new Date(timestamp);
     let hours = date.getHours();
     if (hours < 10){
         hours = `0${hours}`;
@@ -15,6 +16,7 @@ function formatDate(timestamp){
 
 
 function displayTemperature(response){
+    console.log(response.data.currentConditions.icon);
     let cityElement = document.querySelector("#city");
     cityElement.innerHTML = response.data.address;
     let tempElement = document.querySelector("#temp");
@@ -27,12 +29,16 @@ function displayTemperature(response){
     windElement.innerHTML = response.data.currentConditions.windspeed;
     let dateElement = document.querySelector("#date");
     dateElement.innerHTML = formatDate(response.data.currentConditions.datetimeEpoch*1000);
+    let iconElement = document.querySelector("#icon");
+    iconElement.setAttribute("alt", response.data.currentConditions.conditions );
+    iconElement.setAttribute("src", `src/img/${response.data.currentConditions.icon}.png` );
 
 }
 
 
 let apiKey = "DHQX5SS2M9NKBSND8G9HELMWF";
-let apiUrl = `https://weather.visualcrossing.com/VisualCrossingWebServices/rest/services/timeline/Toronto?unitGroup=metric&key=${apiKey}&contentType=json`;
+let city = "Mumbai";
+let apiUrl = `https://weather.visualcrossing.com/VisualCrossingWebServices/rest/services/timeline/${city}?unitGroup=metric&iconSet=icons1&key=${apiKey}&contentType=json`;
 
 axios.get(apiUrl).then(displayTemperature);
 
