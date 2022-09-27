@@ -16,7 +16,7 @@ function formatDate(timestamp){
 
 
 function displayTemperature(response){
-    console.log(response.data.currentConditions.icon);
+
     let cityElement = document.querySelector("#city");
     cityElement.innerHTML = response.data.address;
     let tempElement = document.querySelector("#temp");
@@ -30,15 +30,29 @@ function displayTemperature(response){
     let dateElement = document.querySelector("#date");
     dateElement.innerHTML = formatDate(response.data.currentConditions.datetimeEpoch*1000);
     let iconElement = document.querySelector("#icon");
-    iconElement.setAttribute("alt", response.data.currentConditions.conditions );
-    iconElement.setAttribute("src", `src/img/${response.data.currentConditions.icon}.png` );
+    iconElement.setAttribute("alt", response.data.currentConditions.conditions);
+    iconElement.setAttribute("src", `src/img/${response.data.currentConditions.icon}.png`);
 
 }
 
-
+function search(city){
 let apiKey = "DHQX5SS2M9NKBSND8G9HELMWF";
-let city = "Mumbai";
 let apiUrl = `https://weather.visualcrossing.com/VisualCrossingWebServices/rest/services/timeline/${city}?unitGroup=metric&iconSet=icons1&key=${apiKey}&contentType=json`;
 
 axios.get(apiUrl).then(displayTemperature);
+}
+
+function handleSubmit(event){
+    event.preventDefault();
+    let cityInputElement = document.querySelector("#city-input");
+    search(cityInputElement.value);
+
+
+}
+
+search("Toronto");
+
+
+let form = document.querySelector("#search-form");
+form.addEventListener("submit", handleSubmit);
 
